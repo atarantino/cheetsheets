@@ -1,0 +1,189 @@
+\documentclass[landscape,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1cm]{geometry}
+\usepackage{multicol}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{tabularx}
+\usepackage{tcolorbox}
+\usepackage{microtype}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+\urlstyle{same}
+
+\definecolor{footgray}{gray}{0.35}
+\definecolor{cursorpurple}{RGB}{123,97,255}
+\definecolor{aiblue}{RGB}{59,130,246}
+\definecolor{editgreen}{RGB}{34,197,94}
+\definecolor{navgray}{RGB}{100,116,139}
+
+\setlength{\parindent}{0pt}
+\setlength{\columnsep}{1cm}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.2pt}
+\setlength{\footskip}{16pt}
+\fancyfoot[R]{\footnotesize\color{footgray} \url{https://github.com/atarantino/cheatsheets}}
+
+\begin{document}
+\begin{center}
+{\Huge \textbf{CURSOR CHEAT SHEET}}\\[3mm]
+{\large AI-Powered Code Editor}\\[5mm]
+\end{center}
+
+\begin{multicols}{2}
+
+\section*{\textcolor{cursorpurple}{1. AI FEATURES — The Core of Cursor}}
+Cursor's AI capabilities let you write, edit, and understand code faster.
+
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\linewidth}{@{}>{\ttfamily}l>{\raggedright\arraybackslash}X@{}}
+\normalfont\textbf{Shortcut} & \textbf{Action}\\
+\hline
+Cmd/Ctrl+K & Inline edit — AI modifies selected code\\
+Cmd/Ctrl+L & Open AI chat panel\\
+Cmd/Ctrl+Shift+L & Add selection to chat context\\
+Cmd/Ctrl+I & Open Composer (multi-file AI edit)\\
+Tab & Accept AI suggestion\\
+Esc & Dismiss AI suggestion\\
+Cmd/Ctrl+Shift+K & Generate code at cursor\\
+Cmd/Ctrl+Enter & Accept AI chat suggestion\\
+\end{tabularx}
+\renewcommand{\arraystretch}{1}
+
+\vspace{2mm}
+\begin{tcolorbox}[colback=cursorpurple!8, colframe=cursorpurple, boxsep=2pt, arc=1pt, fontupper=\small\itshape]
+Tip: Select code before pressing Cmd+K to give the AI context for edits.
+\end{tcolorbox}
+
+\section*{\textcolor{aiblue}{2. CHAT \& CONTEXT}}
+Control what the AI knows about your codebase.
+
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\linewidth}{@{}>{\ttfamily}l>{\raggedright\arraybackslash}X@{}}
+\normalfont\textbf{Shortcut / Command} & \textbf{Action}\\
+\hline
+@file & Reference a specific file in chat\\
+@folder & Reference an entire folder\\
+@codebase & Search across entire codebase\\
+@web & Search the web for context\\
+@docs & Reference documentation\\
+@git & Reference git history/diff\\
+Cmd/Ctrl+Shift+L & Add current selection to context\\
+Cmd/Ctrl+N & New chat conversation\\
+\end{tabularx}
+\renewcommand{\arraystretch}{1}
+
+\vspace{2mm}
+\begin{tcolorbox}[colback=aiblue!8, colframe=aiblue, boxsep=2pt, arc=1pt, fontupper=\small\itshape]
+Use @codebase to let the AI search your entire project for relevant context.
+\end{tcolorbox}
+
+\section*{\textcolor{editgreen}{3. CODE EDITING}}
+Essential editing shortcuts (VSCode-based).
+
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\linewidth}{@{}>{\ttfamily}l>{\raggedright\arraybackslash}X@{}}
+\normalfont\textbf{Shortcut} & \textbf{Action}\\
+\hline
+Cmd/Ctrl+D & Select next occurrence\\
+Cmd/Ctrl+Shift+L & Select all occurrences\\
+Alt+Up/Down & Move line up/down\\
+Alt+Shift+Up/Down & Copy line up/down\\
+Cmd/Ctrl+Shift+K & Delete line\\
+Cmd/Ctrl+/ & Toggle comment\\
+Cmd/Ctrl+[ & Outdent line\\
+Cmd/Ctrl+] & Indent line\\
+Cmd/Ctrl+Enter & Insert line below\\
+Cmd/Ctrl+Shift+Enter & Insert line above\\
+Cmd/Ctrl+Shift+\textbackslash & Jump to matching bracket\\
+\end{tabularx}
+\renewcommand{\arraystretch}{1}
+
+\vspace{2mm}
+\begin{tcolorbox}[colback=editgreen!8, colframe=editgreen, boxsep=2pt, arc=1pt, fontupper=\small\itshape]
+Multi-cursor: Hold Alt and click to add cursors, or Cmd+D to select next match.
+\end{tcolorbox}
+
+\section*{\textcolor{navgray}{4. NAVIGATION}}
+Move through files and code quickly.
+
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\linewidth}{@{}>{\ttfamily}l>{\raggedright\arraybackslash}X@{}}
+\normalfont\textbf{Shortcut} & \textbf{Action}\\
+\hline
+Cmd/Ctrl+P & Quick open file\\
+Cmd/Ctrl+Shift+P & Command palette\\
+Cmd/Ctrl+Shift+O & Go to symbol in file\\
+Cmd/Ctrl+T & Go to symbol in workspace\\
+Cmd/Ctrl+G & Go to line\\
+F12 & Go to definition\\
+Alt+F12 & Peek definition\\
+Shift+F12 & Find all references\\
+Cmd/Ctrl+Shift+F & Search in files\\
+Cmd/Ctrl+Shift+E & Explorer panel\\
+Cmd/Ctrl+B & Toggle sidebar\\
+Cmd/Ctrl+J & Toggle terminal\\
+Cmd/Ctrl+\textbackslash & Split editor\\
+Cmd/Ctrl+1/2/3 & Focus editor group\\
+\end{tabularx}
+\renewcommand{\arraystretch}{1}
+
+\section*{\textcolor{BrickRed}{5. DEBUGGING \& TERMINAL}}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\linewidth}{@{}>{\ttfamily}l>{\raggedright\arraybackslash}X@{}}
+\normalfont\textbf{Shortcut} & \textbf{Action}\\
+\hline
+F5 & Start/continue debugging\\
+F9 & Toggle breakpoint\\
+F10 & Step over\\
+F11 & Step into\\
+Shift+F11 & Step out\\
+Cmd/Ctrl+` & Toggle terminal\\
+Cmd/Ctrl+Shift+` & New terminal\\
+\end{tabularx}
+\renewcommand{\arraystretch}{1}
+
+\section*{\textcolor{RoyalBlue}{6. WINDOW \& TABS}}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\linewidth}{@{}>{\ttfamily}l>{\raggedright\arraybackslash}X@{}}
+\normalfont\textbf{Shortcut} & \textbf{Action}\\
+\hline
+Cmd/Ctrl+W & Close tab\\
+Cmd/Ctrl+Shift+T & Reopen closed tab\\
+Cmd/Ctrl+Tab & Switch tabs\\
+Cmd/Ctrl+Shift+N & New window\\
+Cmd/Ctrl+, & Open settings\\
+Cmd/Ctrl+Shift+X & Extensions panel\\
+Ctrl+Tab & Cycle open editors\\
+Cmd/Ctrl+K Cmd/Ctrl+W & Close all tabs\\
+\end{tabularx}
+\renewcommand{\arraystretch}{1}
+
+\section*{\textcolor{Purple}{7. PRO TIPS}}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\linewidth}{@{}l>{\raggedright\arraybackslash}X@{}}
+\textbf{Feature} & \textbf{Description}\\
+\hline
+Composer & Multi-file AI edits with Cmd+I\\
+.cursorrules & Project-specific AI instructions\\
+@-mentions & Reference files, docs, web in chat\\
+Tab completion & AI autocomplete while typing\\
+Diff view & Review AI changes before accepting\\
+Privacy mode & Disable cloud processing\\
+\end{tabularx}
+\renewcommand{\arraystretch}{1}
+
+\vspace{2mm}
+\begin{tcolorbox}[colback=Purple!8, colframe=Purple, boxsep=2pt, arc=1pt, fontupper=\small]
+\textbf{Workflow:} Use Cmd+L for questions, Cmd+K for quick edits, Cmd+I for large refactors.
+\end{tcolorbox}
+
+\vfill
+
+\end{multicols}
+\end{document}
