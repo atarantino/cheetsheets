@@ -1,0 +1,450 @@
+\documentclass[11pt,landscape,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+\usepackage{multicol}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{tcolorbox}
+\usepackage{graphicx}
+\usepackage[T1]{fontenc}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{menukeys}
+\usepackage{setspace}
+\usepackage{microtype}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+\urlstyle{same}
+
+% Define colors
+\definecolor{sectioncolor}{RGB}{41,128,185}
+\definecolor{cursorcolor}{RGB}{138,43,226}
+\definecolor{aicolor}{RGB}{75,0,130}
+\definecolor{editorcolor}{RGB}{30,30,30}
+\definecolor{footgray}{gray}{0.35}
+
+% Custom section formatting
+\usepackage{titlesec}
+\titleformat{\section}
+  {\large\bfseries\color{sectioncolor}}
+  {}
+  {0em}
+  {}
+\titlespacing*{\section}{0pt}{0.25em}{0.15em}
+
+\titleformat{\subsection}
+  {\normalsize\bfseries\color{sectioncolor}}
+  {}
+  {0em}
+  {}
+\titlespacing*{\subsection}{0pt}{0.15em}{0.08em}
+
+% Remove default page numbers and setup footer
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.2pt}
+\setlength{\footskip}{16pt}
+\fancyfoot[R]{\footnotesize\color{footgray} \url{https://github.com/atarantino/cheatsheets}}
+
+% Adjust spacing
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.15em}
+\setlength{\columnsep}{0.7cm}
+
+% Compact list settings
+\setlist{noitemsep, topsep=0pt, partopsep=0pt, parsep=0pt}
+
+% Compact tcolorbox settings
+\tcbset{
+    boxsep=1pt,
+    left=2pt,
+    right=2pt,
+    top=2pt,
+    bottom=2pt,
+    arc=2pt
+}
+
+% Define named box styles
+\newtcolorbox{aibox}{colback=cursorcolor!10, colframe=cursorcolor, fontupper=\footnotesize}
+\newtcolorbox{editorbox}{colback=editorcolor!10, colframe=editorcolor, fontupper=\footnotesize}
+\newtcolorbox{corebox}{colback=sectioncolor!12, colframe=sectioncolor, fontupper=\footnotesize}
+
+\newcommand{\keyline}[2]{\keys{#1}\,\textemdash\,#2}
+
+% OS toggles
+\newif\ifmac
+\newif\ifwin
+\mactrue
+\wintrue
+\ifdefined\MACONLY
+  \mactrue\winfalse
+\fi
+\ifdefined\WINONLY
+  \macfalse\wintrue
+\fi
+
+\begin{document}
+\setstretch{1.15}
+
+\ifwin
+% ========== WINDOWS PAGE ==========
+\begin{center}
+{\LARGE\bfseries\color{cursorcolor} Cursor Cheat Sheet — Windows}\\[0.2em]
+{\small\color{gray} AI-powered code editor built on VS Code — \href{https://cursor.com}{cursor.com}}
+\end{center}
+
+\vspace{-0.2em}
+
+\begin{multicols}{3}
+
+\section*{AI Features}
+\begin{aibox}
+\textbf{Chat \& Composer}\\
+\keyline{Ctrl+L}{Open AI Chat panel}\\
+\keyline{Ctrl+Shift+L}{Add selection to Chat}\\
+\keyline{Ctrl+I}{Open Composer (multi-file edits)}\\
+\keyline{Ctrl+Shift+I}{Open Composer in sidebar}\\
+\keyline{Ctrl+.}{Toggle AI pane}
+\end{aibox}
+
+\begin{aibox}
+\textbf{Inline Editing}\\
+\keyline{Ctrl+K}{Inline AI edit (in editor)}\\
+\keyline{Ctrl+K}{AI command (in terminal)}\\
+Type instruction, press \keys{Enter} to apply\\
+\keyline{Ctrl+Shift+K}{Generate code at cursor}\\
+\keyline{Escape}{Dismiss inline edit}
+\end{aibox}
+
+\begin{aibox}
+\textbf{Tab Completion}\\
+\keyline{Tab}{Accept AI suggestion}\\
+\keyline{Ctrl+Right}{Accept word-by-word}\\
+\keyline{Escape}{Dismiss suggestion}\\
+Cursor predicts your next edit intelligently
+\end{aibox}
+
+\begin{aibox}
+\textbf{@ Mentions in Chat}\\
+\texttt{@file} — Reference specific file\\
+\texttt{@folder} — Include folder context\\
+\texttt{@code} — Reference code selection\\
+\texttt{@docs} — Search documentation\\
+\texttt{@web} — Search the web\\
+\texttt{@git} — Git context and diffs\\
+\texttt{@codebase} — Search entire codebase\\
+\texttt{@definitions} — Symbol definitions
+\end{aibox}
+
+\section*{File Navigation}
+\begin{editorbox}
+\textbf{Quick Open}\\
+\keyline{Ctrl+P}{Quick open file}\\
+\keyline{Ctrl+Shift+P}{Command Palette}\\
+\keyline{Ctrl+G}{Go to line}\\
+\keyline{Ctrl+T}{Go to symbol in workspace}\\
+\keyline{Ctrl+Shift+O}{Go to symbol in file}\\
+\keyline{F12}{Go to definition}\\
+\keyline{Alt+F12}{Peek definition}\\
+\keyline{Shift+F12}{Find all references}
+\end{editorbox}
+
+\begin{editorbox}
+\textbf{File Management}\\
+\keyline{Ctrl+N}{New file}\\
+\keyline{Ctrl+O}{Open file}\\
+\keyline{Ctrl+S}{Save file}\\
+\keyline{Ctrl+Shift+S}{Save as}\\
+\keyline{Ctrl+W}{Close editor}\\
+\keyline{Ctrl+Shift+T}{Reopen closed editor}\\
+\keyline{Ctrl+Tab}{Switch between open files}\\
+\keyline{Ctrl+\textbackslash}{Split editor}
+\end{editorbox}
+
+\columnbreak
+
+\section*{Editing}
+\begin{editorbox}
+\textbf{Basic Editing}\\
+\keyline{Ctrl+X}{Cut line (empty selection)}\\
+\keyline{Ctrl+C}{Copy line (empty selection)}\\
+\keyline{Ctrl+Shift+K}{Delete line}\\
+\keyline{Alt+Up/Down}{Move line up/down}\\
+\keyline{Ctrl+Shift+Alt+Up/Down}{Copy line up/down}\\
+\keyline{Ctrl+Enter}{Insert line below}\\
+\keyline{Ctrl+Shift+Enter}{Insert line above}\\
+\keyline{Ctrl+]}{Indent line}\\
+\keyline{Ctrl+[}{Outdent line}
+\end{editorbox}
+
+\begin{editorbox}
+\textbf{Multi-Cursor}\\
+\keyline{Alt+Click}{Add cursor}\\
+\keyline{Ctrl+Alt+Up/Down}{Add cursor above/below}\\
+\keyline{Ctrl+D}{Select next occurrence}\\
+\keyline{Ctrl+Shift+L}{Select all occurrences}\\
+\keyline{Ctrl+U}{Undo last cursor}\\
+\keyline{Escape}{Exit multi-cursor mode}
+\end{editorbox}
+
+\begin{editorbox}
+\textbf{Selection}\\
+\keyline{Ctrl+L}{Select current line}\\
+\keyline{Ctrl+Shift+L}{Select all occurrences}\\
+\keyline{Shift+Alt+Right}{Expand selection}\\
+\keyline{Shift+Alt+Left}{Shrink selection}\\
+\keyline{Ctrl+Shift+[}{Fold region}\\
+\keyline{Ctrl+Shift+]}{Unfold region}
+\end{editorbox}
+
+\section*{Search \& Replace}
+\begin{editorbox}
+\keyline{Ctrl+F}{Find in file}\\
+\keyline{Ctrl+H}{Replace in file}\\
+\keyline{Ctrl+Shift+F}{Find in files (workspace)}\\
+\keyline{Ctrl+Shift+H}{Replace in files}\\
+\keyline{F3}{Find next}\\
+\keyline{Shift+F3}{Find previous}\\
+\keyline{Alt+Enter}{Select all matches}
+\end{editorbox}
+
+\columnbreak
+
+\section*{View \& Panels}
+\begin{editorbox}
+\textbf{Panels}\\
+\keyline{Ctrl+B}{Toggle sidebar}\\
+\keyline{Ctrl+J}{Toggle bottom panel}\\
+\keyline{Ctrl+`}{Toggle terminal}\\
+\keyline{Ctrl+Shift+E}{Explorer panel}\\
+\keyline{Ctrl+Shift+F}{Search panel}\\
+\keyline{Ctrl+Shift+G}{Source Control panel}\\
+\keyline{Ctrl+Shift+D}{Debug panel}\\
+\keyline{Ctrl+Shift+X}{Extensions panel}
+\end{editorbox}
+
+\begin{editorbox}
+\textbf{Editor Layout}\\
+\keyline{Ctrl+1/2/3}{Focus editor group}\\
+\keyline{Ctrl+\textbackslash}{Split editor}\\
+\keyline{Ctrl+W}{Close editor}\\
+\keyline{Ctrl+K Ctrl+W}{Close all editors}\\
+\keyline{Ctrl+Shift+N}{New window}\\
+\keyline{Ctrl+Shift+W}{Close window}
+\end{editorbox}
+
+\section*{Terminal}
+\begin{editorbox}
+\keyline{Ctrl+`}{Toggle terminal}\\
+\keyline{Ctrl+Shift+`}{New terminal}\\
+\keyline{Ctrl+Shift+5}{Split terminal}\\
+\keyline{Ctrl+K}{AI command in terminal}\\
+\keyline{Ctrl+PageUp/Down}{Scroll terminal}
+\end{editorbox}
+
+\section*{Git Integration}
+\begin{editorbox}
+\keyline{Ctrl+Shift+G}{Open Source Control}\\
+\keyline{Ctrl+Enter}{Commit (in SCM input)}\\
+Stage, commit, push from sidebar\\
+View diffs inline with gutter indicators
+\end{editorbox}
+
+\section*{Tips}
+\begin{corebox}
+\textbullet{} Use \texttt{@codebase} for project-wide questions\\
+\textbullet{} \keys{Ctrl+K} in editor = edit code\\
+\textbullet{} \keys{Ctrl+K} in terminal = AI commands\\
+\textbullet{} Tab completion learns your patterns\\
+\textbullet{} Composer can edit multiple files at once\\
+\textbullet{} Use \texttt{@docs} to query documentation
+\end{corebox}
+
+\end{multicols}
+
+\fi
+\ifwin\newpage\fi
+
+\ifmac
+% ========== macOS PAGE ==========
+\begin{center}
+{\LARGE\bfseries\color{cursorcolor} Cursor Cheat Sheet — macOS}\\[0.2em]
+{\small\color{gray} AI-powered code editor built on VS Code — \href{https://cursor.com}{cursor.com}}
+\end{center}
+
+\vspace{-0.2em}
+
+\begin{multicols}{3}
+
+\section*{AI Features}
+\begin{aibox}
+\textbf{Chat \& Composer}\\
+\keyline{Cmd+L}{Open AI Chat panel}\\
+\keyline{Cmd+Shift+L}{Add selection to Chat}\\
+\keyline{Cmd+I}{Open Composer (multi-file edits)}\\
+\keyline{Cmd+Shift+I}{Open Composer in sidebar}\\
+\keyline{Cmd+.}{Toggle AI pane}
+\end{aibox}
+
+\begin{aibox}
+\textbf{Inline Editing}\\
+\keyline{Cmd+K}{Inline AI edit (in editor)}\\
+\keyline{Cmd+K}{AI command (in terminal)}\\
+Type instruction, press \keys{Enter} to apply\\
+\keyline{Cmd+Shift+K}{Generate code at cursor}\\
+\keyline{Escape}{Dismiss inline edit}
+\end{aibox}
+
+\begin{aibox}
+\textbf{Tab Completion}\\
+\keyline{Tab}{Accept AI suggestion}\\
+\keyline{Cmd+Right}{Accept word-by-word}\\
+\keyline{Escape}{Dismiss suggestion}\\
+Cursor predicts your next edit intelligently
+\end{aibox}
+
+\begin{aibox}
+\textbf{@ Mentions in Chat}\\
+\texttt{@file} — Reference specific file\\
+\texttt{@folder} — Include folder context\\
+\texttt{@code} — Reference code selection\\
+\texttt{@docs} — Search documentation\\
+\texttt{@web} — Search the web\\
+\texttt{@git} — Git context and diffs\\
+\texttt{@codebase} — Search entire codebase\\
+\texttt{@definitions} — Symbol definitions
+\end{aibox}
+
+\section*{File Navigation}
+\begin{editorbox}
+\textbf{Quick Open}\\
+\keyline{Cmd+P}{Quick open file}\\
+\keyline{Cmd+Shift+P}{Command Palette}\\
+\keyline{Ctrl+G}{Go to line}\\
+\keyline{Cmd+T}{Go to symbol in workspace}\\
+\keyline{Cmd+Shift+O}{Go to symbol in file}\\
+\keyline{F12}{Go to definition}\\
+\keyline{Opt+F12}{Peek definition}\\
+\keyline{Shift+F12}{Find all references}
+\end{editorbox}
+
+\begin{editorbox}
+\textbf{File Management}\\
+\keyline{Cmd+N}{New file}\\
+\keyline{Cmd+O}{Open file}\\
+\keyline{Cmd+S}{Save file}\\
+\keyline{Cmd+Shift+S}{Save as}\\
+\keyline{Cmd+W}{Close editor}\\
+\keyline{Cmd+Shift+T}{Reopen closed editor}\\
+\keyline{Ctrl+Tab}{Switch between open files}\\
+\keyline{Cmd+\textbackslash}{Split editor}
+\end{editorbox}
+
+\columnbreak
+
+\section*{Editing}
+\begin{editorbox}
+\textbf{Basic Editing}\\
+\keyline{Cmd+X}{Cut line (empty selection)}\\
+\keyline{Cmd+C}{Copy line (empty selection)}\\
+\keyline{Cmd+Shift+K}{Delete line}\\
+\keyline{Opt+Up/Down}{Move line up/down}\\
+\keyline{Opt+Shift+Up/Down}{Copy line up/down}\\
+\keyline{Cmd+Enter}{Insert line below}\\
+\keyline{Cmd+Shift+Enter}{Insert line above}\\
+\keyline{Cmd+]}{Indent line}\\
+\keyline{Cmd+[}{Outdent line}
+\end{editorbox}
+
+\begin{editorbox}
+\textbf{Multi-Cursor}\\
+\keyline{Opt+Click}{Add cursor}\\
+\keyline{Cmd+Opt+Up/Down}{Add cursor above/below}\\
+\keyline{Cmd+D}{Select next occurrence}\\
+\keyline{Cmd+Shift+L}{Select all occurrences}\\
+\keyline{Cmd+U}{Undo last cursor}\\
+\keyline{Escape}{Exit multi-cursor mode}
+\end{editorbox}
+
+\begin{editorbox}
+\textbf{Selection}\\
+\keyline{Cmd+L}{Select current line}\\
+\keyline{Cmd+Shift+L}{Select all occurrences}\\
+\keyline{Ctrl+Shift+Cmd+Right}{Expand selection}\\
+\keyline{Ctrl+Shift+Cmd+Left}{Shrink selection}\\
+\keyline{Cmd+Opt+[}{Fold region}\\
+\keyline{Cmd+Opt+]}{Unfold region}
+\end{editorbox}
+
+\section*{Search \& Replace}
+\begin{editorbox}
+\keyline{Cmd+F}{Find in file}\\
+\keyline{Cmd+Opt+F}{Replace in file}\\
+\keyline{Cmd+Shift+F}{Find in files (workspace)}\\
+\keyline{Cmd+Shift+H}{Replace in files}\\
+\keyline{Cmd+G}{Find next}\\
+\keyline{Cmd+Shift+G}{Find previous}\\
+\keyline{Cmd+Enter}{Select all matches (in find)}
+\end{editorbox}
+
+\columnbreak
+
+\section*{View \& Panels}
+\begin{editorbox}
+\textbf{Panels}\\
+\keyline{Cmd+B}{Toggle sidebar}\\
+\keyline{Cmd+J}{Toggle bottom panel}\\
+\keyline{Ctrl+`}{Toggle terminal}\\
+\keyline{Cmd+Shift+E}{Explorer panel}\\
+\keyline{Cmd+Shift+F}{Search panel}\\
+\keyline{Ctrl+Shift+G}{Source Control panel}\\
+\keyline{Cmd+Shift+D}{Debug panel}\\
+\keyline{Cmd+Shift+X}{Extensions panel}
+\end{editorbox}
+
+\begin{editorbox}
+\textbf{Editor Layout}\\
+\keyline{Cmd+1/2/3}{Focus editor group}\\
+\keyline{Cmd+\textbackslash}{Split editor}\\
+\keyline{Cmd+W}{Close editor}\\
+\keyline{Cmd+K Cmd+W}{Close all editors}\\
+\keyline{Cmd+Shift+N}{New window}\\
+\keyline{Cmd+Shift+W}{Close window}
+\end{editorbox}
+
+\section*{Terminal}
+\begin{editorbox}
+\keyline{Ctrl+`}{Toggle terminal}\\
+\keyline{Ctrl+Shift+`}{New terminal}\\
+\keyline{Cmd+\textbackslash}{Split terminal}\\
+\keyline{Cmd+K}{AI command in terminal}\\
+\keyline{Cmd+Up/Down}{Scroll terminal}
+\end{editorbox}
+
+\section*{Git Integration}
+\begin{editorbox}
+\keyline{Ctrl+Shift+G}{Open Source Control}\\
+\keyline{Cmd+Enter}{Commit (in SCM input)}\\
+Stage, commit, push from sidebar\\
+View diffs inline with gutter indicators
+\end{editorbox}
+
+\section*{Tips}
+\begin{corebox}
+\textbullet{} Use \texttt{@codebase} for project-wide questions\\
+\textbullet{} \keys{Cmd+K} in editor = edit code\\
+\textbullet{} \keys{Cmd+K} in terminal = AI commands\\
+\textbullet{} Tab completion learns your patterns\\
+\textbullet{} Composer can edit multiple files at once\\
+\textbullet{} Use \texttt{@docs} to query documentation
+\end{corebox}
+
+\end{multicols}
+
+\fi
+
+\end{document}

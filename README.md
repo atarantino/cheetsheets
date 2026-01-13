@@ -6,6 +6,8 @@ A collection of LaTeX-based cheat sheets for productivity tools and shortcuts.
 
 - [macOS Productivity Cheat Sheet](build/productivity-cheatsheet-mac.pdf)
 - [Windows Productivity Cheat Sheet](build/productivity-cheatsheet-windows.pdf)
+- [Cursor Cheat Sheet — macOS](build/cursor-cheatsheet-mac.pdf)
+- [Cursor Cheat Sheet — Windows](build/cursor-cheatsheet-windows.pdf)
 - [Vim Cheat Sheet](build/vim_cheat_sheet.pdf)
 
 ## Prerequisites
