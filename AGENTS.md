@@ -11,6 +11,7 @@ latexmk
 ```bash
 latexmk src/productivity-cheatsheet-mac.tex
 latexmk src/vim_cheat_sheet.tex
+latexmk src/claude_code_cheatsheet.tex
 ```
 
 **Clean build artifacts:**

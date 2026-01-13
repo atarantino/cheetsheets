@@ -1,0 +1,273 @@
+\documentclass[landscape,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1cm]{geometry}
+\usepackage{multicol}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{tabularx}
+\usepackage{tcolorbox}
+\usepackage{microtype}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+\urlstyle{same}
+
+\definecolor{footgray}{gray}{0.35}
+\definecolor{claudeorange}{RGB}{217,119,87}
+\definecolor{claudeblue}{RGB}{59,130,246}
+\definecolor{claudegreen}{RGB}{34,197,94}
+\definecolor{claudepurple}{RGB}{147,51,234}
+\definecolor{claudegray}{RGB}{75,85,99}
+
+\setlength{\parindent}{0pt}
+\setlength{\columnsep}{1cm}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.2pt}
+\setlength{\footskip}{16pt}
+\fancyfoot[R]{\footnotesize\color{footgray} \url{https://github.com/atarantino/cheatsheets}}
+
+\begin{document}
+\begin{center}
+{\Huge \textbf{CLAUDE CODE CHEAT SHEET}}\\[3mm]
+{\large Anthropic's AI-powered CLI for software engineering}\\[5mm]
+\end{center}
+
+\begin{multicols}{3}
+
+\section*{\textcolor{claudeorange}{1. GETTING STARTED}}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\linewidth}{@{}>{\ttfamily}l>{\raggedright\arraybackslash}X@{}}
+\normalfont\textbf{Command} & \textbf{Description}\\
+\hline
+claude & Start interactive REPL\\
+claude "prompt" & Run with initial prompt\\
+claude -p "prompt" & Print mode (non-interactive)\\
+claude -c & Continue last conversation\\
+claude --resume & Resume specific session\\
+cat file | claude & Pipe input to Claude\\
+\end{tabularx}
+\renewcommand{\arraystretch}{1}
+
+\vspace{2mm}
+\begin{tcolorbox}[colback=claudeorange!8, colframe=claudeorange, boxsep=2pt, arc=1pt, fontupper=\small]
+\textbf{Installation:} \texttt{npm install -g @anthropic-ai/claude-code}
+\end{tcolorbox}
+
+\section*{\textcolor{claudeblue}{2. SLASH COMMANDS}}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\linewidth}{@{}>{\ttfamily}l>{\raggedright\arraybackslash}X@{}}
+\normalfont\textbf{Command} & \textbf{Action}\\
+\hline
+/help & Show help and commands\\
+/clear & Clear conversation history\\
+/compact & Summarize conversation\\
+/config & Open settings\\
+/cost & Show token usage\\
+/doctor & Check installation health\\
+/init & Initialize project config\\
+/login & Authenticate with Anthropic\\
+/logout & Sign out\\
+/memory & Edit memory files\\
+/model & Switch AI model\\
+/permissions & Manage tool permissions\\
+/review & Code review mode\\
+/terminal-setup & Configure terminal\\
+/vim & Toggle vim keybindings\\
+\end{tabularx}
+\renewcommand{\arraystretch}{1}
+
+\vspace{2mm}
+\begin{tcolorbox}[colback=claudeblue!8, colframe=claudeblue, boxsep=2pt, arc=1pt, fontupper=\small\itshape]
+Type \texttt{/} in the REPL to see all available commands.
+\end{tcolorbox}
+
+\section*{\textcolor{claudegreen}{3. KEYBOARD SHORTCUTS}}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\linewidth}{@{}>{\ttfamily}l>{\raggedright\arraybackslash}X@{}}
+\normalfont\textbf{Shortcut} & \textbf{Action}\\
+\hline
+Enter & Send message (single line)\\
+Shift+Enter & New line in input\\
+Ctrl+C & Cancel current operation\\
+Ctrl+D & Exit Claude Code\\
+Esc & Interrupt response\\
+Esc, Esc & Force quit\\
+Up/Down & Navigate history\\
+Tab & Autocomplete files/commands\\
+\end{tabularx}
+\renewcommand{\arraystretch}{1}
+
+\vspace{2mm}
+\begin{tcolorbox}[colback=claudegreen!8, colframe=claudegreen, boxsep=2pt, arc=1pt, fontupper=\small\itshape]
+Enable vim mode with \texttt{/vim} for modal editing.
+\end{tcolorbox}
+
+\section*{\textcolor{claudepurple}{4. CORE TOOLS}}
+Claude Code uses these tools to interact with your system:
+
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\linewidth}{@{}>{\ttfamily}l>{\raggedright\arraybackslash}X@{}}
+\normalfont\textbf{Tool} & \textbf{Purpose}\\
+\hline
+Read & Read file contents\\
+Edit & Make targeted edits\\
+Write & Create/overwrite files\\
+Bash & Execute shell commands\\
+Glob & Find files by pattern\\
+Grep & Search file contents\\
+WebFetch & Fetch URL content\\
+WebSearch & Search the web\\
+Task & Launch sub-agents\\
+\end{tabularx}
+\renewcommand{\arraystretch}{1}
+
+\vspace{2mm}
+\begin{tcolorbox}[colback=claudepurple!8, colframe=claudepurple, boxsep=2pt, arc=1pt, fontupper=\small]
+\textbf{Permission modes:}\\
+\texttt{--allowedTools} — Whitelist specific tools\\
+\texttt{--dangerously-skip-permissions} — Auto-approve all
+\end{tcolorbox}
+
+\section*{\textcolor{BrickRed}{5. GIT OPERATIONS}}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\linewidth}{@{}>{\ttfamily}l>{\raggedright\arraybackslash}X@{}}
+\normalfont\textbf{Request} & \textbf{Claude Will...}\\
+\hline
+"commit this" & Stage, write message, commit\\
+"create a PR" & Push branch, create PR via gh\\
+"review this PR" & Analyze changes, give feedback\\
+"git status" & Show repo state\\
+"undo last commit" & Reset safely\\
+\end{tabularx}
+\renewcommand{\arraystretch}{1}
+
+\vspace{2mm}
+\begin{tcolorbox}[colback=BrickRed!8, colframe=BrickRed, boxsep=2pt, arc=1pt, fontupper=\small\itshape]
+Claude follows git best practices and won't force-push to main.
+\end{tcolorbox}
+
+\section*{\textcolor{claudegray}{6. CONFIGURATION}}
+
+\textbf{Config file locations:}
+\begin{itemize}
+  \setlength{\itemsep}{0pt}
+  \item \texttt{\textasciitilde/.claude/settings.json} — Global settings
+  \item \texttt{.claude/settings.json} — Project settings
+  \item \texttt{CLAUDE.md} — Project context/instructions
+  \item \texttt{\textasciitilde/.claude/CLAUDE.md} — Global memory
+\end{itemize}
+
+\vspace{2mm}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\linewidth}{@{}>{\ttfamily\small}l>{\raggedright\arraybackslash}X@{}}
+\normalfont\textbf{Setting} & \textbf{Purpose}\\
+\hline
+theme & dark / light / system\\
+model & Default model to use\\
+permissions & Tool approval rules\\
+\end{tabularx}
+\renewcommand{\arraystretch}{1}
+
+\section*{\textcolor{Cerulean}{7. MCP SERVERS}}
+Model Context Protocol extends Claude's capabilities:
+
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X@{}}
+\textbf{Common MCP servers:}\\
+\hline
+\texttt{@anthropic-ai/mcp-server-memory} — Persistent memory\\
+\texttt{@anthropic-ai/mcp-server-fetch} — Enhanced web fetch\\
+\texttt{@anthropic-ai/mcp-server-github} — GitHub integration\\
+\texttt{@anthropic-ai/mcp-server-postgres} — Database access\\
+\end{tabularx}
+\renewcommand{\arraystretch}{1}
+
+\vspace{2mm}
+\begin{tcolorbox}[colback=Cerulean!8, colframe=Cerulean, boxsep=2pt, arc=1pt, fontupper=\small]
+Configure in \texttt{settings.json} under \texttt{"mcpServers"} key.
+\end{tcolorbox}
+
+\section*{\textcolor{Violet}{8. HOOKS}}
+Automate actions on Claude events:
+
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\linewidth}{@{}>{\ttfamily\small}l>{\raggedright\arraybackslash}X@{}}
+\normalfont\textbf{Hook} & \textbf{Triggers When}\\
+\hline
+PreToolUse & Before tool execution\\
+PostToolUse & After tool execution\\
+Notification & Claude sends notification\\
+Stop & Conversation ends\\
+\end{tabularx}
+\renewcommand{\arraystretch}{1}
+
+\vspace{2mm}
+\begin{tcolorbox}[colback=Violet!8, colframe=Violet, boxsep=2pt, arc=1pt, fontupper=\small\itshape]
+Hooks can block, modify, or log tool usage.
+\end{tcolorbox}
+
+\section*{\textcolor{OliveGreen}{9. EFFECTIVE PROMPTING}}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X@{}}
+\textbf{Best practices for Claude Code:}\\
+\hline
+Be specific about file paths and changes\\
+Provide context in CLAUDE.md for project conventions\\
+Use "don't" to prevent unwanted behaviors\\
+Ask Claude to explain before implementing\\
+Request tests alongside new features\\
+Use \texttt{@file.txt} to include file contents\\
+\end{tabularx}
+\renewcommand{\arraystretch}{1}
+
+\vspace{2mm}
+\begin{tcolorbox}[colback=OliveGreen!8, colframe=OliveGreen, boxsep=2pt, arc=1pt, fontupper=\small]
+\textbf{Example CLAUDE.md:}\\
+\texttt{Use TypeScript with strict mode.}\\
+\texttt{Run tests with: npm test}\\
+\texttt{Don't modify package.json without asking.}
+\end{tcolorbox}
+
+\section*{\textcolor{RawSienna}{10. COMMON WORKFLOWS}}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X@{}}
+\textbf{Typical tasks and how to request them:}\\
+\hline
+"Fix the bug in auth.ts line 42"\\
+"Add unit tests for the UserService class"\\
+"Refactor this function to use async/await"\\
+"Explain how the payment flow works"\\
+"Review my changes before I commit"\\
+"Find all usages of deprecated API"\\
+"Create a new React component for..."\\
+\end{tabularx}
+\renewcommand{\arraystretch}{1}
+
+\vspace{2mm}
+\begin{tcolorbox}[colback=RawSienna!8, colframe=RawSienna, boxsep=2pt, arc=1pt, fontupper=\small\itshape]
+Claude reads your codebase for context — point it to relevant files.
+\end{tcolorbox}
+
+\section*{\textcolor{Gray}{11. TIPS \& TRICKS}}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X@{}}
+\textbf{Power user techniques:}\\
+\hline
+Use \texttt{claude -c} to continue where you left off\\
+Pipe error output: \texttt{npm test 2>\&1 | claude}\\
+Run headless in CI with \texttt{-p} flag\\
+Check costs with \texttt{/cost} during long sessions\\
+Use \texttt{/compact} to reduce context usage\\
+Create project-specific CLAUDE.md files\\
+Set up hooks to auto-format on file changes\\
+\end{tabularx}
+\renewcommand{\arraystretch}{1}
+
+\vfill
+
+\end{multicols}
+\end{document}
